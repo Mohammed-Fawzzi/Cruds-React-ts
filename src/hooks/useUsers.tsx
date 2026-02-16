@@ -1,17 +1,15 @@
-import axios from "axios";
 import { useState, useCallback } from "react";
-import { type User } from "@/types/users.type";
+import axios from "axios";
+import type { User } from "@/types/users.type";
 
-export default function useUsers() {
+export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
-
       const response = await axios.get<User[]>("http://localhost:3000/users");
-
       setUsers(response.data);
     } catch (error: unknown) {
       console.error(error);
@@ -20,5 +18,8 @@ export default function useUsers() {
     }
   }, []);
 
-  return { fetchUsers, loading, users };
+  return { fetchUsers, loading, users, setUsers };
 }
+export const deleteUser = async (id: number) => {
+  await axios.delete(`http://localhost:3000/users/${id}`);
+};

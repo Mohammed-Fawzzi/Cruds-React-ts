@@ -1,15 +1,37 @@
 import { useEffect } from "react";
-import useUsers from "@/hooks/useUsers";
+import { useUsers, deleteUser } from "@/hooks/useUsers";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Users() {
-  const { fetchUsers, loading, users } = useUsers();
+  const { fetchUsers, loading, users, setUsers } = useUsers();
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+
+  const handleDelete = async (id: number) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to undo this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e11d48",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (!confirm.isConfirmed) return;
+    try {
+      await deleteUser(id);
+      setUsers((prev) => prev.filter((user) => user.id !== id));
+    } catch (error: unknown) {
+      console.log(error);
+    }
+  };
 
   if (loading) return <Loading />;
 
@@ -28,10 +50,11 @@ export default function Users() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-auto">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 text-gray-600 uppercase text-xs">
             <tr>
+              <th className="p-4 text-left">ID</th>
               <th className="p-4 text-left">Name</th>
               <th className="p-4 text-left">Username</th>
               <th className="p-4 text-left">Email</th>
@@ -45,6 +68,7 @@ export default function Users() {
           <tbody className="divide-y">
             {users.map((user) => (
               <tr key={user.id} className="hover:bg-gray-50 transition">
+                <td className="p-4 font-medium text-gray-800">{user.id}</td>
                 <td className="p-4 font-medium text-gray-800">{user.name}</td>
 
                 <td className="p-4 text-gray-500">@{user.username}</td>
@@ -69,20 +93,16 @@ export default function Users() {
                 <td className="p-4">
                   <div className="flex items-center justify-center gap-2">
                     <button
-                      onClick={() => navigate(`/users/${user.id}`)}
-                      className="px-3 py-1 text-xs rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 transition"
-                    >
-                      Read
-                    </button>
-
-                    <button
                       onClick={() => navigate(`/users/update/${user.id}`)}
                       className="px-3 py-1 text-xs rounded-md bg-amber-100 hover:bg-amber-200 text-amber-700 transition"
                     >
                       Update
                     </button>
 
-                    <button className="px-3 py-1 text-xs rounded-md bg-red-100 hover:bg-red-200 text-red-700 transition">
+                    <button
+                      onClick={() => handleDelete(user.id)}
+                      className="px-3 py-1 text-xs rounded-md bg-red-100 hover:bg-red-200 text-red-700 transition"
+                    >
                       Delete
                     </button>
                   </div>
