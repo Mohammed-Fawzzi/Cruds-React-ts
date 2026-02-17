@@ -19,13 +19,14 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
       age: "",
       city: "",
       role: "",
+      active: true,
     },
     onSubmit,
     validationSchema,
   });
 
   return (
-    <div className="shadow-lg p-5">
+    <div className="p-5">
       <form onSubmit={formik.handleSubmit}>
         <div className="mt-4">
           <label htmlFor="name">Full Name:</label>
@@ -142,13 +143,51 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
           />
         </div>
 
+        <div className="mt-5">
+          <label className="block mb-2 font-medium text-gray-700">Status</label>
+
+          <div className="inline-flex rounded-lg border border-gray-300 overflow-hidden">
+            {/* Active */}
+            <button
+              type="button"
+              onClick={() => formik.setFieldValue("active", true)}
+              className={`px-4 py-2 text-sm font-medium transition
+                ${
+                  formik.values.active === true
+                    ? "bg-green-500 text-white"
+                    : "bg-white text-gray-600 hover:bg-gray-100"
+                }`}
+            >
+              Active
+            </button>
+
+            {/* Inactive */}
+            <button
+              type="button"
+              onClick={() => formik.setFieldValue("active", false)}
+              className={`px-4 py-2 text-sm font-medium border-l border-gray-300 transition
+              ${
+                formik.values.active === false
+                  ? "bg-red-500 text-white"
+                  : "bg-white text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              Inactive
+            </button>
+          </div>
+
+          <FormError
+            message={formik.touched.active ? formik.errors.active : undefined}
+          />
+        </div>
+
         <Button
           type="submit"
           isLoading={isLoading}
           disabled={!(formik.isValid && formik.dirty) || isLoading}
           className="mt-5"
         >
-          اضافة مستخدم
+          Add User
         </Button>
       </form>
     </div>

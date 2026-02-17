@@ -14,4 +14,5 @@ export const validationSchema = Yup.object({
   age: Yup.number().typeError("العمر يجب أن يكون رقم").required("العمر مطلوب"),
   city: Yup.string().required("المدينة مطلوبة"),
   role: Yup.string().required("الدور مطلوب"),
+  active: Yup.string().required("الدور مطلوب"),
 });
