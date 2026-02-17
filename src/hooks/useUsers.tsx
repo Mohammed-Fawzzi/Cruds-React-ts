@@ -1,25 +1,17 @@
-import { useState, useCallback } from "react";
-import axios from "axios";
 import type { User } from "@/types/users.type";
+import axios from "axios";
+import { useState } from "react";
 
-export function useUsers() {
+export default function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetchUsers = useCallback(async () => {
+  const fetchUsers = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get<User[]>("http://localhost:3000/users");
-      setUsers(response.data);
-    } catch (error: unknown) {
-      console.error(error);
-    } finally {
-      setLoading(false);
+      const { data } = await axios.get<User[]>("http://localhost:3000/users");
+      setUsers(data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
     }
-  }, []);
+  };
 
-  return { fetchUsers, loading, users, setUsers };
+  return { fetchUsers, users, setUsers };
 }
-export const deleteUser = async (id: number) => {
-  await axios.delete(`http://localhost:3000/users/${id}`);
-};

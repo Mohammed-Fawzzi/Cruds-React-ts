@@ -1,7 +1,7 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       {/* Navbar */}
       <header className="bg-white border-b shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-blue-600">CRUDS Dashboard</h1>
+          <h1 className="text-3xl font-bold text-blue-600">CRUDS Dashboard</h1>
 
           <span className="text-sm text-gray-400">React + TypeScript</span>
         </div>
