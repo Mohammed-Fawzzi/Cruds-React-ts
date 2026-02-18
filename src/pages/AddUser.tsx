@@ -1,4 +1,4 @@
-import AddUserForm from "@/components/common/ui/AddUserForm";
+import AddUserForm from "@/components/common/AddUserForm";
 import useAddUser from "@/hooks/useAddUser";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ export default function AddUser() {
         <h2 className="text-2xl font-bold text-blue-800">Add New User</h2>
         <button
           onClick={() => navigate(-1)}
-          className="flex gap-2 justify-center text-white font-semibold rounded-md bg-gradient-to-t from-blue-500 to-purple-600 px-3 py-2 text-sm cursor-pointer"
+          className="flex gap-2 justify-center text-white font-semibold rounded-md bg-linear-to-t from-blue-500 to-purple-600 px-3 py-2 text-sm cursor-pointer"
         >
           <span>Back</span>
           <IoArrowRedoOutline />

@@ -2,6 +2,7 @@ import useDeleteUser from "@/hooks/useDeleteUser";
 import useUsers from "@/hooks/useUsers";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 export default function Users() {
@@ -12,11 +13,7 @@ export default function Users() {
     fetchUsers();
   }, []);
 
-  const handleUpdate = (id: number) => {
-    console.log("Update user", id);
-  };
-
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     try {
       const confirm = await Swal.fire({
         title: "Are you sure?",
@@ -31,6 +28,7 @@ export default function Users() {
 
       await deleteUser(id);
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+      toast.success("User deleted successfully");
     } catch (error) {
       console.error("Error deleting user:", error);
     }
@@ -97,12 +95,12 @@ export default function Users() {
                 {/* Actions */}
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-center gap-2">
-                    <button
-                      onClick={() => handleUpdate(user.id)}
+                    <Link
+                      to={`users/update/${user.id}`}
                       className="px-3 py-1.5 text-xs font-medium rounded-lg bg-yellow-100 text-yellow-700 hover:bg-yellow-200 transition"
                     >
                       Update
-                    </button>
+                    </Link>
 
                     <button
                       onClick={() => handleDelete(user.id)}

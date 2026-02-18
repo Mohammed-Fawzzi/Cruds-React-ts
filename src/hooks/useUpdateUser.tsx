@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import baseUrl from "@/config/baseUrl";
 
-export default function useAddUser() {
+export default function useUpdateUser(id?: string) {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  async function handleAddUser(values: UserInput) {
+  async function handleUpdateUser(values: UserInput) {
     try {
       setIsLoading(true);
-      await axios.post(`${baseUrl}F`, values);
-      toast.success("User added successfully!");
+      await axios.put(`${baseUrl}/${id}`, values);
+      toast.success("User updated successfully!");
       setIsLoading(false);
       navigate("/");
     } catch (error) {
@@ -22,5 +22,5 @@ export default function useAddUser() {
     }
   }
 
-  return { handleAddUser, isLoading };
+  return { handleUpdateUser, isLoading };
 }

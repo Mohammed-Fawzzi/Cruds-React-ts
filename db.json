@@ -472,49 +472,6 @@
       "city": "Cairo",
       "role": "HR Assistant",
       "active": true
-    },
-    {
-      "id": "44",
-      "name": "Shady Ashraf",
-      "userName": "shadyash",
-      "email": "shady@mail.com",
-      "phone": "01030000044",
-      "age": 28,
-      "city": "Mansoura",
-      "role": "Backend Developer",
-      "active": false
-    },
-    {
-      "id": "45",
-      "name": "Kareem Said",
-      "userName": "kareemsaid",
-      "email": "kareem@mail.com",
-      "phone": "01030000045",
-      "age": 35,
-      "city": "Tanta",
-      "role": "Tech Manager",
-      "active": true
-    },
-    {
-      "id": "46",
-      "name": "Eman Saeed",
-      "userName": "emansa",
-      "email": "eman@mail.com",
-      "phone": "01030000046",
-      "age": 24,
-      "city": "Cairo",
-      "role": "Marketing Specialist",
-      "active": true
-    },
-    {
-      "id": "370d",
-      "name": "Mohamed Fawzzi",
-      "userName": "mohamed@14",
-      "email": "mohamedfawzzimohamed@gmail.com",
-      "phone": "+966541005479",
-      "age": 26,
-      "city": "Riyadh",
-      "role": "frontend"
     }
   ]
 }

@@ -1,5 +1,5 @@
 export type User = {
-  id: number;
+  id: string;
   name: string;
   userName: string;
   email: string;
@@ -15,7 +15,7 @@ export type UserInput = {
   userName: string;
   email: string;
   phone?: string;
-  age: string;
+  age: string | number;
   city: string;
   role: string;
   active?: boolean;
