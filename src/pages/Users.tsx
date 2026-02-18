@@ -1,6 +1,8 @@
+import UserDetailsModal from "@/components/common/UserDetailsModal";
 import useDeleteUser from "@/hooks/useDeleteUser";
 import useUsers from "@/hooks/useUsers";
-import { useEffect } from "react";
+import type { User } from "@/types/users.type";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -8,6 +10,7 @@ import Swal from "sweetalert2";
 export default function Users() {
   const { fetchUsers, users, setUsers } = useUsers();
   const { deleteUser } = useDeleteUser();
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   useEffect(() => {
     fetchUsers();
@@ -95,16 +98,23 @@ export default function Users() {
                 {/* Actions */}
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-center gap-2">
+                    <button
+                      onClick={() => setSelectedUser(user)}
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-yellow-100 text-gray-700 hover:bg-yellow-200 transition cursor-pointer"
+                    >
+                      Details
+                    </button>
+
                     <Link
                       to={`users/update/${user.id}`}
-                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-yellow-100 text-yellow-700 hover:bg-yellow-200 transition"
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 transition"
                     >
                       Update
                     </Link>
 
                     <button
                       onClick={() => handleDelete(user.id)}
-                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition"
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition cursor-pointer"
                     >
                       Delete
                     </button>
@@ -114,6 +124,13 @@ export default function Users() {
             ))}
           </tbody>
         </table>
+
+        {selectedUser && (
+          <UserDetailsModal
+            user={selectedUser}
+            onClose={() => setSelectedUser(null)}
+          />
+        )}
       </div>
     </section>
   );
