@@ -3,19 +3,30 @@ import useDeleteUser from "@/hooks/useDeleteUser";
 import useUsers from "@/hooks/useUsers";
 import type { User } from "@/types/users.type";
 import { useEffect, useState } from "react";
+import Pagination from "@/components/common/Pagination.tsx";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 export default function Users() {
-  const { fetchUsers, users, setUsers } = useUsers();
+  const {
+    fetchUsers,
+    users,
+    setUsers,
+    currentPage,
+    setCurrentPage,
+    limit,
+    setLimit,
+    totalPages,
+  } = useUsers();
   const { deleteUser } = useDeleteUser();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers(currentPage, limit);
+  }, [currentPage, limit]);
 
+  // Delete User
   const handleDelete = async (id: string) => {
     try {
       const confirm = await Swal.fire({
@@ -67,12 +78,14 @@ export default function Users() {
           </thead>
 
           <tbody className="divide-y">
-            {users.map((user, idx) => (
+            {users?.map((user) => (
               <tr
                 key={user.id}
                 className="hover:bg-gray-50 transition-colors duration-150"
               >
-                <td className="px-4 py-3 font-medium text-gray-800">{idx}</td>
+                <td className="px-4 py-3 font-medium text-gray-800">
+                  {user.id}
+                </td>
                 <td className="px-4 py-3">{user.name}</td>
                 <td className="px-4 py-3 text-gray-600">@{user.userName}</td>
                 <td className="px-4 py-3">{user.age}</td>
@@ -85,11 +98,10 @@ export default function Users() {
 
                 <td className="px-4 py-3 text-center">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      user.active
-                        ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
-                    }`}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${user.active
+                      ? "bg-green-100 text-green-700"
+                      : "bg-red-100 text-red-700"
+                      }`}
                   >
                     {user.active ? "Active" : "Inactive"}
                   </span>
@@ -124,7 +136,6 @@ export default function Users() {
             ))}
           </tbody>
         </table>
-
         {selectedUser && (
           <UserDetailsModal
             user={selectedUser}
@@ -132,6 +143,13 @@ export default function Users() {
           />
         )}
       </div>
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        setLimit={setLimit}
+      />
     </section>
   );
 }
