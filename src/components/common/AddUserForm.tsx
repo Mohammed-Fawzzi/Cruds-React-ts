@@ -29,13 +29,13 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
     <div className="p-5">
       <form onSubmit={formik.handleSubmit}>
         <div className="mt-4">
-          <label htmlFor="name">Full Name:</label>
+          <label htmlFor="name" className="text-gray-700 dark:text-gray-300">Full Name:</label>
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Ex: Mohamed Fawzzi"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.name}
@@ -44,14 +44,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             message={formik.touched.name ? formik.errors.name : undefined}
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="userName">User Name:</label>
+          <label htmlFor="userName" className="text-gray-700 dark:text-gray-300">User Name:</label>
           <input
             type="text"
             name="userName"
             id="userName"
             placeholder="Ex: mohamed@14"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.userName}
@@ -62,14 +63,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             }
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email:</label>
           <input
             type="text"
             name="email"
             id="email"
             placeholder="Ex: ex@example.com"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -78,14 +80,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             message={formik.touched.email ? formik.errors.email : undefined}
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="phone">Phone:</label>
+          <label htmlFor="phone" className="text-gray-700 dark:text-gray-300">Phone:</label>
           <input
             type="text"
             name="phone"
             id="phone"
             placeholder="Ex: +966 054 xxx xxxx"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -94,14 +97,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             message={formik.touched.phone ? formik.errors.phone : undefined}
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="age">Age:</label>
+          <label htmlFor="age" className="text-gray-700 dark:text-gray-300">Age:</label>
           <input
             type="number"
             name="age"
             id="age"
             placeholder="Ex: 25"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.age}
@@ -110,14 +114,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             message={formik.touched.age ? formik.errors.age : undefined}
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city" className="text-gray-700 dark:text-gray-300">City:</label>
           <input
             type="text"
             name="city"
             id="city"
             placeholder="Ex: +966 054 xxx xxxx"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.city}
@@ -126,14 +131,15 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             message={formik.touched.city ? formik.errors.city : undefined}
           />
         </div>
+
         <div className="mt-4">
-          <label htmlFor="role">Role:</label>
+          <label htmlFor="role" className="text-gray-700 dark:text-gray-300">Role:</label>
           <input
             type="text"
             name="role"
             id="role"
             placeholder="Ex: +966 054 xxx xxxx"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.role}
@@ -144,18 +150,17 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
         </div>
 
         <div className="mt-5">
-          <label className="block mb-2 font-medium text-gray-700">Status</label>
+          <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">Status</label>
 
-          <div className="inline-flex rounded-lg border border-gray-300 overflow-hidden">
+          <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden">
             {/* Active */}
             <button
               type="button"
               onClick={() => formik.setFieldValue("active", true)}
               className={`px-4 py-2 text-sm font-medium transition
-                ${
-                  formik.values.active === true
-                    ? "bg-green-500 text-white"
-                    : "bg-white text-gray-600 hover:bg-gray-100"
+                ${formik.values.active === true
+                  ? "bg-green-500 text-white"
+                  : "bg-white dark:bg-[#0f172a] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 }`}
             >
               Active
@@ -165,12 +170,11 @@ export default function AddUserForm({ isLoading, onSubmit }: Props) {
             <button
               type="button"
               onClick={() => formik.setFieldValue("active", false)}
-              className={`px-4 py-2 text-sm font-medium border-l border-gray-300 transition
-              ${
-                formik.values.active === false
+              className={`px-4 py-2 text-sm font-medium border-l border-gray-300 dark:border-gray-600 transition
+              ${formik.values.active === false
                   ? "bg-red-500 text-white"
-                  : "bg-white text-gray-600 hover:bg-gray-100"
-              }`}
+                  : "bg-white dark:bg-[#0f172a] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                }`}
             >
               Inactive
             </button>

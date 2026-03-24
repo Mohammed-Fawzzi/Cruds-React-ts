@@ -52,7 +52,9 @@ export default function Users() {
     <section>
       {/* Header */}
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-2xl font-bold text-gray-800">Users Management</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+          Users Management
+        </h2>
 
         <Link
           to={"/users/add"}
@@ -62,9 +64,9 @@ export default function Users() {
         </Link>
       </div>
 
-      <div className="overflow-x-auto rounded-2xl shadow-lg border border-gray-200">
-        <table className="min-w-full text-sm text-left">
-          <thead className="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
+      <div className="overflow-x-auto rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f172a] p-3">
+        <table className="min-w-full text-sm text-left text-gray-800 dark:text-gray-200">
+          <thead className="bg-gray-100 dark:bg-[#1e293b] text-gray-700 dark:text-gray-300 uppercase text-xs tracking-wider">
             <tr>
               <th className="px-4 py-3">ID</th>
               <th className="px-4 py-3">Full Name</th>
@@ -77,21 +79,23 @@ export default function Users() {
             </tr>
           </thead>
 
-          <tbody className="divide-y">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
             {users?.map((user) => (
               <tr
                 key={user.id}
-                className="hover:bg-gray-50 transition-colors duration-150"
+                className="hover:bg-gray-50 dark:hover:bg-[#1e293b] transition-colors duration-150"
               >
-                <td className="px-4 py-3 font-medium text-gray-800">
+                <td className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200">
                   {user.id}
                 </td>
                 <td className="px-4 py-3">{user.name}</td>
-                <td className="px-4 py-3 text-gray-600">@{user.userName}</td>
+                <td className="px-4 py-3 text-gray-600 dark:text-gray-400">
+                  @{user.userName}
+                </td>
                 <td className="px-4 py-3">{user.age}</td>
                 <td className="px-4 py-3">{user.phone}</td>
                 <td className="px-4 py-3">
-                  <span className="px-2 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-medium">
+                  <span className="px-2 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-medium">
                     {user.role}
                   </span>
                 </td>
@@ -99,8 +103,8 @@ export default function Users() {
                 <td className="px-4 py-3 text-center">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${user.active
-                      ? "bg-green-100 text-green-700"
-                      : "bg-red-100 text-red-700"
+                        ? "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300"
+                        : "bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300"
                       }`}
                   >
                     {user.active ? "Active" : "Inactive"}
@@ -112,21 +116,21 @@ export default function Users() {
                   <div className="flex items-center justify-center gap-2">
                     <button
                       onClick={() => setSelectedUser(user)}
-                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-yellow-100 text-gray-700 hover:bg-yellow-200 transition cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-yellow-100 dark:bg-yellow-500/20 text-gray-700 dark:text-yellow-300 hover:bg-yellow-200 dark:hover:bg-yellow-500/30 transition cursor-pointer"
                     >
                       Details
                     </button>
 
                     <Link
                       to={`users/update/${user.id}`}
-                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 transition"
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-500/30 transition"
                     >
                       Update
                     </Link>
 
                     <button
                       onClick={() => handleDelete(user.id)}
-                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-500/30 transition cursor-pointer"
                     >
                       Delete
                     </button>
@@ -136,6 +140,15 @@ export default function Users() {
             ))}
           </tbody>
         </table>
+
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+          setLimit={setLimit}
+        />
+
         {selectedUser && (
           <UserDetailsModal
             user={selectedUser}
@@ -143,13 +156,6 @@ export default function Users() {
           />
         )}
       </div>
-      {/* Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-        setLimit={setLimit}
-      />
     </section>
   );
 }

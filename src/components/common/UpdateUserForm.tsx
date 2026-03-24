@@ -47,12 +47,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
       <form onSubmit={formik.handleSubmit}>
         {/* Name */}
         <div className="mt-4">
-          <label htmlFor="name">Full Name:</label>
+          <label htmlFor="name" className="text-gray-700 dark:text-gray-300">Full Name:</label>
           <input
             type="text"
             name="name"
             id="name"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -64,12 +64,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Username */}
         <div className="mt-4">
-          <label htmlFor="userName">User Name:</label>
+          <label htmlFor="userName" className="text-gray-700 dark:text-gray-300">User Name:</label>
           <input
             type="text"
             name="userName"
             id="userName"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.userName}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -83,12 +83,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Email */}
         <div className="mt-4">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email:</label>
           <input
             type="text"
             name="email"
             id="email"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -100,12 +100,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Phone */}
         <div className="mt-4">
-          <label htmlFor="phone">Phone:</label>
+          <label htmlFor="phone" className="text-gray-700 dark:text-gray-300">Phone:</label>
           <input
             type="text"
             name="phone"
             id="phone"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.phone}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -117,12 +117,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Age */}
         <div className="mt-4">
-          <label htmlFor="age">Age:</label>
+          <label htmlFor="age" className="text-gray-700 dark:text-gray-300">Age:</label>
           <input
             type="number"
             name="age"
             id="age"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.age}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -134,12 +134,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* City */}
         <div className="mt-4">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city" className="text-gray-700 dark:text-gray-300">City:</label>
           <input
             type="text"
             name="city"
             id="city"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.city}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -151,12 +151,12 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Role */}
         <div className="mt-4">
-          <label htmlFor="role">Role:</label>
+          <label htmlFor="role" className="text-gray-700 dark:text-gray-300">Role:</label>
           <input
             type="text"
             name="role"
             id="role"
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 w-full"
             value={formik.values.role}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -168,15 +168,16 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
 
         {/* Status */}
         <div className="mt-5">
-          <label className="block mb-2 font-medium text-gray-700">Status</label>
+          <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">Status</label>
 
-          <div className="inline-flex rounded-lg border border-gray-300 overflow-hidden">
+          <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden">
             <button
               type="button"
               onClick={() => formik.setFieldValue("active", true)}
-              className={`px-4 py-2 ${
-                formik.values.active ? "bg-green-500 text-white" : "bg-white"
-              }`}
+              className={`px-4 py-2 ${formik.values.active
+                  ? "bg-green-500 text-white"
+                  : "bg-white dark:bg-[#0f172a] text-gray-700 dark:text-gray-300"
+                }`}
             >
               Active
             </button>
@@ -184,9 +185,10 @@ export default function UpdateUserForm({ isLoading, onSubmit, userId }: Props) {
             <button
               type="button"
               onClick={() => formik.setFieldValue("active", false)}
-              className={`px-4 py-2 border-l ${
-                !formik.values.active ? "bg-red-500 text-white" : "bg-white"
-              }`}
+              className={`px-4 py-2 border-l border-gray-300 dark:border-gray-600 ${!formik.values.active
+                  ? "bg-red-500 text-white"
+                  : "bg-white dark:bg-[#0f172a] text-gray-700 dark:text-gray-300"
+                }`}
             >
               Inactive
             </button>
